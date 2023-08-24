@@ -26,7 +26,7 @@ jobs:
           args: --acl public-read
         env:
           FILE: Everdome-Spaces-Launcher-Setup.exe
-          AWS_REGION: 'us-east-1'
+          AWS_REGION: 'eu-west-2'
           S3_BUCKET: ${{ secrets.UPLOAD_AWS_S3_BUCKET }}
           S3_KEY: Everdome-Spaces-Launcher-Setup.exe
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }}
@@ -49,7 +49,7 @@ jobs:
           args: --acl public-read
         env:
           FILE: Everdome-Spaces-Launcher.dmg
-          AWS_REGION: 'us-east-1'
+          AWS_REGION: 'eu-west-2'
           S3_BUCKET: ${{ secrets.UPLOAD_AWS_S3_BUCKET }}
           S3_KEY: Everdome-Spaces-Launcher.dmg
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }}
@@ -68,7 +68,7 @@ jobs:
           args: --acl public-read
         env:
           FILE: launcher-version.json
-          AWS_REGION: 'us-east-1'
+          AWS_REGION: 'eu-west-2'
           S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
           S3_KEY: launcher-version.json
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }}
