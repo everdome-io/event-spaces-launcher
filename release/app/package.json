@@ -1,7 +1,7 @@
 {
-  "name": "okx-collective-metaverse",
-  "version": "1.13.3",
-  "description": "OKX Collective Metaverse",
+  "name": "everdome-spaces-launcher",
+  "version": "1.0.0",
+  "description": "Everdome Spaces Launcher",
   "license": "MIT",
   "repository": "https://github.com/everdome-io/launcher-desktop-app",
   "author": {

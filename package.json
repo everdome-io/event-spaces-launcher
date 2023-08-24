@@ -1,5 +1,5 @@
 {
-  "description": "Launcher Desktop App",
+  "description": "Everdome Spaces Launcher",
   "homepage": "https://github.com/everdome-io/launcher-desktop-app#readme",
   "bugs": {
     "url": "https://github.com/everdome-io/launcher-desktop-app/issues"
@@ -164,7 +164,7 @@
     "webpack-merge": "^5.8.0"
   },
   "build": {
-    "productName": "OKX Collective Metaverse",
+    "productName": "Everdome Spaces Launcher",
     "appId": "com.pragmaticcoders.everdomeLauncher",
     "asar": true,
     "asarUnpack": "**\\*.{node,dll}",

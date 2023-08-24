@@ -82,7 +82,7 @@ window?.electron?.ipcRenderer?.on(
 );
 
 window?.electron?.ipcRenderer?.once('downloadLatestWindows', () => {
-  const url = `https://okx-everdome-builds.s3.amazonaws.com/OKX-Collective-Metaverse-Setup.exe`;
+  const url = `https://okx-everdome-builds.s3.amazonaws.com/Everdome-Spaces-Launcher-Setup.exe`;
   window.open(url, '_blank');
   window.electron.ipcRenderer.sendMessage('closeApp');
 });
