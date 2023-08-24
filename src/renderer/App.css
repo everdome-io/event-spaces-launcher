@@ -1,0 +1,106 @@
+@font-face {
+  font-family: 'HarmonyOS Sans';
+  src: url('assets/fonts/HarmonyOS_Sans_SC/HarmonyOS_Sans_SC_Light.ttf');
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: 'HarmonyOS Sans';
+  src: url('assets/fonts/HarmonyOS_Sans_SC/HarmonyOS_Sans_SC_Regular.ttf');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'HarmonyOS Sans';
+  src: url('assets/fonts/HarmonyOS_Sans_SC/HarmonyOS_Sans_SC_Medium.ttf');
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: 'HarmonyOS Sans';
+  src: url('assets/fonts/HarmonyOS_Sans_SC/HarmonyOS_Sans_SC_Bold.ttf');
+  font-weight: 700;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100vh;
+  font-family: 'HarmonyOS Sans', sans-serif;
+  color: white;
+  background-color: #000;
+
+}
+
+* {
+  box-sizing: border-box;
+  position: relative;
+}
+
+div {
+  height: 100%;
+}
+
+button {
+  border: none;
+  appearance: none;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  height: fit-content;
+  width: fit-content;
+  margin: 10px;
+}
+
+a:hover {
+  opacity: 1;
+  text-decoration: none;
+}
+
+.MainMenu {
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+}
+
+.MainMenu ul {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-left: 0;
+  width: 20%;
+}
+
+.MainMenu li a {
+  color: #fff;
+  font-size: 14px;
+  line-height: 18px;
+  margin: 0;
+}
+
+.MainMenu li a:hover {
+  font-weight: 600;
+}
+
+.MainMenu li+li {
+  margin-left: 25px;
+}
+
+.myWallet {
+  background-color: #000;
+  width: 68px;
+  height: 24px;
+  padding-top: 8px;
+  padding-left: 14px;
+  border-radius: 8px;
+}

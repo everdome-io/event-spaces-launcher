@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "incremental": true,
+    "target": "es2021",
+    "module": "commonjs",
+    "lib": ["dom", "es2021"],
+    "jsx": "react-jsx",
+    "strict": true,
+    "sourceMap": true,
+    "paths": {
+      "@*": ["src/*"]
+    },
+    "baseUrl": ".",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "allowJs": true,
+    "outDir": ".erb/dll"
+  },
+  "exclude": [
+    "test",
+    "release/build",
+    "release/app/dist",
+    ".erb/dll",
+    "assets/okx"
+  ],
+  "include": ["src", "assets"]
+}

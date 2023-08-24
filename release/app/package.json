@@ -1,0 +1,19 @@
+{
+  "name": "okx-collective-metaverse",
+  "version": "1.13.3",
+  "description": "OKX Collective Metaverse",
+  "license": "MIT",
+  "repository": "https://github.com/everdome-io/launcher-desktop-app",
+  "author": {
+    "name": "Pragmatic Coders",
+    "email": "pc@pragmaticcoders.com",
+    "url": "https://github.com/everdome-io/launcher-desktop-app"
+  },
+  "main": "./dist/main/main.js",
+  "scripts": {
+    "rebuild": "node -r ts-node/register ../../.erb/scripts/electron-rebuild.js",
+    "postinstall": "npm run rebuild && npm run link-modules",
+    "link-modules": "node -r ts-node/register ../../.erb/scripts/link-modules.ts"
+  },
+  "dependencies": {}
+}

@@ -1,0 +1,64 @@
+.container {
+  margin-top: 3.5rem;
+}
+
+.mainBtn {
+  composes: primary from '../theme/buttons.module.css';
+}
+
+.duringDownload {
+  composes: primary from '../theme/buttons.module.css';
+  width: 280px;
+  background-color: #000000;
+  border: 2px solid #ffffff;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+}
+
+.duringDownload:hover {
+  background-color: #000000;
+  color: #fff;
+  cursor: default;
+}
+
+.duringDownload::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(to right, #ffffff, #ffffff);
+  animation: fill 3s linear infinite;
+}
+
+.duringDownload span {
+  mix-blend-mode: difference;
+}
+
+@keyframes fill {
+  0% {
+    width: 0%;
+  }
+
+  100% {
+    width: 100%;
+  }
+}
+
+.playBtn {
+  composes: primary from '../theme/buttons.module.css';
+  width: 291px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.playBtn:hover::after {
+  content: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 11L4 11L4 13L5 13L5 11ZM19 13C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11L19 13ZM5 13L19 13L19 11L5 11L5 13Z' fill='black'/%3E%3Cpath d='M13 6L19 12L13 18' stroke='black' stroke-width='2' stroke-linecap='square' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+  height: 24px;
+  margin-left: 10px;
+}
