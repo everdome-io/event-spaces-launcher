@@ -1,5 +1,4 @@
 import { FC, useState } from 'react';
-import OKX_Framed_Training from 'assets/images/OKX_Framed_Training.png';
 import logo from 'assets/images/logo.png';
 import { Channels } from '@interfaces';
 import { useNavigate } from 'react-router-dom';
@@ -17,7 +16,7 @@ export const TermsOfService: FC = () => {
     if (isTermsChecked && isAgeChecked) {
       window.electron.ipcRenderer.sendMessage(Channels.acceptTerms);
       sentryEventHandler('Terms accepted');
-      navigate('/connect-or-skip');
+      navigate('/');
     } else {
       setIsTermsValid(isTermsChecked);
       setIsAgeValid(isAgeChecked);
@@ -52,7 +51,6 @@ export const TermsOfService: FC = () => {
           experience
         </p>
         <div className={styles.bannerContainer}>
-          <img src={OKX_Framed_Training} alt="OKX" width={352} height={222} />
           <p className={styles.poweredBy}>
             Experience powered by{' '}
             <img src={logo} alt="Everdome" width={136} height={11} />

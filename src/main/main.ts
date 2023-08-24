@@ -8,14 +8,7 @@
  * `./src/main.js` using webpack. This gives us some performance wins.
  */
 import path from 'path';
-import {
-  app,
-  BrowserWindow,
-  shell,
-  ipcMain,
-  dialog,
-  BrowserView,
-} from 'electron';
+import { app, BrowserWindow, shell, ipcMain, dialog } from 'electron';
 import { autoUpdater, UpdateDownloadedEvent } from 'electron-updater';
 import Store from 'electron-store';
 import request from 'request';
@@ -42,7 +35,6 @@ import {
 } from './utils';
 import { downloadFileWithProgress } from './utils/download';
 import { extractWithProgress } from './utils/extract';
-import { getUserFromAPI } from '../api';
 import { getFilePath, playMetaverse } from './utils/enter-game';
 import { errorHandler } from './utils/errorHandler';
 import { sentryEventHandler } from './utils/sentryEventHandler';
@@ -54,7 +46,6 @@ const PROFILE_WINDOW_SIZE = { width: 342, height: 728 };
 const windows = new Set();
 
 let mainWindow: BrowserWindow | null = null;
-let faqWebView: BrowserView | null = null;
 let profileWindow: BrowserWindow | null = null;
 let downloadWebLink: string | null = null;
 
@@ -109,7 +100,6 @@ const setStore = (statusCode: number, s3Path: string): Promise<void> => {
     const gameFileExist = statusCode.toString()[0] === '2';
     if (gameFileExist) {
       downloadWebLink = `https://metahero-dev-eu-west-2-launcher.s3.amazonaws.com/${s3Path}`;
-      // downloadWebLink = `https://github.com/Gann4/Thirdym/releases/download/0.1.0-alpha/Thirdym.v0.1.0-alpha.zip`;
       const storeWebLink = store.get('webLink') as string | undefined;
       const couldUseWebLink = storeWebLink !== downloadWebLink;
       store.set('couldUseWebLink', couldUseWebLink);
@@ -224,7 +214,7 @@ const createProfileWindow = async () => {
   profileWindow.setPosition(x, y);
 
   profileWindow.on('ready-to-show', () => {
-    if (store.get('termsAccepted') && store.get('connectedOrSkipped')) {
+    if (store.get('termsAccepted')) {
       if (!profileWindow) {
         const message = '"profileWindow" is not defined';
         Sentry.captureException(message);
@@ -568,17 +558,6 @@ ipcMain.on(Channels.acceptTerms, (_event) => {
   mainWindow?.webContents.send(Channels.acceptTerms, {
     termsAccepted: true,
   });
-  if (store.get('connectedOrSkipped')) {
-    profileWindow?.show();
-  }
-});
-
-ipcMain.on(Channels.connectedOrSkipped, (_event) => {
-  store.set('connectedOrSkipped', true);
-
-  if (store.get('termsAccepted')) {
-    profileWindow?.show();
-  }
 });
 
 ipcMain.on(
@@ -631,33 +610,6 @@ ipcMain.on(Channels.handleUpdateForWindows, () => {
 
 ipcMain.on('closeApp', () => {
   app.quit();
-});
-
-ipcMain.on(Channels.openFAQWindow, () => {
-  profileWindow?.hide();
-  faqWebView = new BrowserView();
-  mainWindow!.setBrowserView(faqWebView);
-  faqWebView.webContents
-    .loadURL(`${OKX_WEB_APP_URL}/faq.html`)
-    .then((result) => {
-      mainWindow?.webContents.send(Channels.crossWindow, {
-        webViewLoading: false,
-      });
-      return result;
-    })
-    .catch(errorHandler);
-  const mainWindowHeight = mainWindow!.getBounds().height;
-  faqWebView.setBounds({
-    x: 0,
-    y: 0,
-    width: 1280,
-    height: mainWindowHeight - 150,
-  });
-});
-
-ipcMain.on(Channels.closeFAQWindow, () => {
-  mainWindow!.setBrowserView(null);
-  profileWindow?.show();
 });
 
 ipcMain.on('electron-store-get', async (event, val) => {

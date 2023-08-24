@@ -1,6 +1,6 @@
 import { FC } from 'react';
-import styles from '../theme/buttons.module.css';
 import { ArrowLeft } from '@renderer/icons/ArrowLeft';
+import styles from '../theme/buttons.module.css';
 
 interface BackButtonProps {
   onClick: () => void;

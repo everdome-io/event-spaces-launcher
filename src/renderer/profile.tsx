@@ -6,7 +6,6 @@ import UserProfile from './UserProfile';
 initializeSentry();
 
 let crossWindowState: CrossWindowState = {
-  isAuthenticated: false,
   errorMessage: '',
   webViewLoading: true,
 };

@@ -1,8 +1,8 @@
 import { AppState, Channels, Processes } from '@interfaces';
 import { FC, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import styles from './FileDownloader.module.css';
 import { sentryEventHandler } from '@main/utils/sentryEventHandler';
+import styles from './FileDownloader.module.css';
 
 function toShortSize(_size: number) {
   let size = _size;

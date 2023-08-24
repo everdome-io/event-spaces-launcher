@@ -6,30 +6,7 @@ import telegramAccouncementsIcon from 'assets/images/social-icons/telegram_accou
 import youtubeIcon from 'assets/images/social-icons/youtube.png';
 import instagramIcon from 'assets/images/social-icons/instagram.png';
 import linkedinIcon from 'assets/images/social-icons/linkedin.png';
-import newsImage1 from 'assets/images/news/1.png';
-import newsImage2 from 'assets/images/news/2.png';
-import newsImage3 from 'assets/images/news/3.png';
 import styles from './News.module.css';
-
-const newsData = [
-  {
-    id: 1,
-    date: 'August 29, 2022',
-    title: 'Sneak Peek, Everdome Phoenix Passenger Cabins',
-  },
-  {
-    id: 2,
-    date: 'August 29, 2022',
-    title:
-      'Valtteri Bottas And Zhou Guanyu Lead Everdome’s Metaverse VR Experience Debut',
-  },
-  {
-    id: 3,
-    date: 'August 29, 2022',
-    title: 'Welcoming Everdomes New Pioneers',
-  },
-];
-const newsImages = [newsImage1, newsImage2, newsImage3];
 
 export const News: FC = () => {
   return (
@@ -88,19 +65,6 @@ export const News: FC = () => {
             />
           </a>
         </div>
-      </div>
-      <div className={styles.NewsList}>
-        {newsData.map((newsItem) => (
-          <div className={styles.NewsItem} key={newsItem.id}>
-            <img
-              className={styles.NewsImage}
-              src={newsImages[newsItem.id - 1]}
-              alt="news"
-            />
-            <div className={styles.NewsDate}>{newsItem.date}</div>
-            <div className={styles.NewsTitle}>{newsItem.title}</div>
-          </div>
-        ))}
       </div>
     </section>
   );

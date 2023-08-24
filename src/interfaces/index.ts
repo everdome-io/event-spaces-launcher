@@ -7,22 +7,11 @@ export enum Channels {
   showProfileWindow = 'show-profile-window',
   hideProfileWindow = 'hide-profile-window',
   acceptTerms = 'accept-terms',
-  connectedOrSkipped = 'connected-or-skipped',
   backToMainView = 'back-to-main-view',
-  openFAQWindow = 'open-faq-window',
-  closeFAQWindow = 'close-faq-window',
-
   crossWindow = 'cross-window',
   changeState = 'change-state',
-
   appUpdate = 'app-update',
-
-  openOKXExtension = 'open-okx',
-  closeOKXExtension = 'close-okx',
-  showOkxWindow = 'show-okx-window',
-
   toggleProfileWindow = 'toggle-profile-window',
-
   handleUpdateForWindows = 'handle-update-for-windows',
 }
 /* eslint-disable no-shadow */
@@ -64,7 +53,6 @@ export type AppState = {
 };
 
 export type CrossWindowState = {
-  isAuthenticated: boolean;
   errorMessage: string;
   webViewLoading: boolean;
 };
@@ -84,17 +72,11 @@ export type ElectronEventArgs<T> = T extends Channels.changeState
 
 export interface UserAttributes {
   userId: string;
-  publicKey: string;
   avatarId: string | null;
   nickName: string | null;
-  isFakePublicKey: boolean;
 }
 
 export enum ToggleWindowMode {
   open = 'open',
   close = 'close',
-}
-
-export enum SettingType {
-  NFT_Publish = 'NFT_Publish',
 }

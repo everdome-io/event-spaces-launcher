@@ -16,45 +16,6 @@
   opacity: 0.5;
 }
 
-.walletAddressContainer {
-  composes: flexCenter from '../theme/layout.module.css';
-  justify-content: flex-start;
-}
-
-.walletAddress {
-  font-size: 12px;
-  margin: 0 6px 0 12px;
-  line-height: 15px;
-}
-
-.walletBtn {
-  composes: flexCenter from '../theme/layout.module.css';
-  justify-content: flex-start;
-  background: none;
-  border: none;
-  appearance: none;
-  color: #fff;
-  opacity: 0.5;
-  cursor: pointer;
-}
-
-.walletBtn:hover {
-  opacity: 0.7;
-}
-
-.walletBtnClose {
-  composes: walletBtn;
-}
-
-.walletBtnOpen {
-  composes: walletBtn;
-}
-
-.walletBtnOpen svg {
-  transform: rotate(180deg);
-  transition: .4s ease-in-out;
-}
-
 .copyIcon {
   width: 16px;
   height: 16px;

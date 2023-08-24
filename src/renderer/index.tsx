@@ -25,7 +25,6 @@ let updateState: AppUpdate = {
 };
 
 let crossWindowState: CrossWindowState = {
-  isAuthenticated: false,
   errorMessage: '',
   webViewLoading: true,
 };

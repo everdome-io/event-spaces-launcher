@@ -10,9 +10,6 @@ import { ArrowRight } from '@renderer/icons/ArrowRight';
 import { ArrowLeft } from '@renderer/icons/ArrowLeft';
 import { BackButton } from '@renderer/components/BackButton';
 import { useNavigate } from 'react-router-dom';
-import { setUserInAPI } from '@api';
-import { generateFakeEthAddress } from '@interfaces/publicKeyGenerator';
-import * as Sentry from '@sentry/electron';
 import { sentryEventHandler } from '@main/utils/sentryEventHandler';
 import styles from './AvatarList.module.css';
 
@@ -26,7 +23,6 @@ export const AvatarList: FC<{
     avatarId: string | null;
   }) => void;
 }> = ({ beforePlay = false, onClickSave }) => {
-  const userId = window?.electron?.store?.get('userId') as string;
   const avatarId = window?.electron?.store?.get('avatarId') || '0';
   const [avatarIndex, setAvatarIndex] = useState(Number(avatarId));
 
@@ -36,17 +32,6 @@ export const AvatarList: FC<{
 
   const nickNameRef = useRef(null);
   const navigate = useNavigate();
-
-  let publicKey: string;
-  let isFakePublicKey: boolean;
-
-  if (window?.electron?.store?.get('publicKey')) {
-    publicKey = window?.electron?.store?.get('publicKey');
-    isFakePublicKey = false;
-  } else {
-    publicKey = generateFakeEthAddress();
-    isFakePublicKey = true;
-  }
 
   const handleInputChange = (event: any) => {
     setNickNameValue(event.target.value);
@@ -65,22 +50,8 @@ export const AvatarList: FC<{
     navigate('/');
   };
   const onSave = async () => {
-    window.electron.store.set('publicKey', publicKey);
     window.electron.store.set('avatarId', avatarIndex.toString());
     window.electron.store.set('nickName', nickNameValue || placeholderValue);
-    await setUserInAPI(
-      {
-        avatarId: avatarIndex.toString(),
-        nickName: nickNameValue || placeholderValue,
-        publicKey,
-        userId,
-        isFakePublicKey,
-      },
-      (err) => {
-        Sentry.captureException(err);
-        console.log('err', err);
-      }
-    );
     if (onClickSave) {
       onClickSave({
         avatarId: avatarIndex.toString(),

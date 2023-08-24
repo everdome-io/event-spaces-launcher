@@ -11,13 +11,6 @@ export const Menu: FC = ({}) => {
       <Logo />
       <ul>
         <li>
-          <a href="#">
-            <div className="myWallet" onClick={handleOnClick}>
-              My wallet
-            </div>
-          </a>
-        </li>
-        <li>
           <a href="#">Send feedback</a>
         </li>
         <li>
