@@ -10,7 +10,7 @@ import {
 import { initializeSentry } from '../common/sentry';
 import App from './App';
 
-// initializeSentry();
+initializeSentry();
 
 let state: AppState = {
   progress: 0,

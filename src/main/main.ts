@@ -49,7 +49,6 @@ import { sentryEventHandler } from './utils/sentryEventHandler';
 
 const store = new Store();
 
-const OKX_WEB_APP_URL = 'https://okx.prod.aws.everdome.io';
 const PROFILE_WINDOW_SIZE = { width: 342, height: 728 };
 
 const windows = new Set();
@@ -57,7 +56,6 @@ const windows = new Set();
 let mainWindow: BrowserWindow | null = null;
 let faqWebView: BrowserView | null = null;
 let profileWindow: BrowserWindow | null = null;
-let okxWebView: BrowserView | null = null;
 let downloadWebLink: string | null = null;
 
 if (process.env.NODE_ENV === 'production') {
@@ -154,9 +152,6 @@ const createWindow = async () => {
   });
   windows.add(mainWindow);
 
-  okxWebView = new BrowserView();
-  mainWindow.setBrowserView(okxWebView);
-
   mainWindow.loadURL(resolveHtmlPath('index.html'));
   mainWindow.center();
   mainWindow.on('ready-to-show', async () => {
@@ -181,40 +176,6 @@ const createWindow = async () => {
         width: PROFILE_WINDOW_SIZE.width,
         height: PROFILE_WINDOW_SIZE.height,
       });
-    }
-  });
-
-  okxWebView.webContents.on('did-navigate', async (event, url) => {
-    if (url.includes('/success')) {
-      await profileWindow
-        ?.loadURL(resolveHtmlPath('profile.html'))
-        .catch(errorHandler);
-      store.set('connectedOrSkipped', true);
-      const userId = store.get('userId') as string | undefined;
-      if (userId) {
-        await getUserFromAPI({
-          userId,
-          handleError: (err: any) => {
-            Sentry.captureException(err);
-            mainWindow?.webContents.send(Channels.crossWindow, {
-              isAuthenticated: true,
-              errorMessage: err.toString(),
-            });
-          },
-        });
-        profileWindow?.webContents.send(Channels.crossWindow, {
-          isAuthenticated: true,
-        });
-        mainWindow?.webContents.send(Channels.crossWindow, {
-          isAuthenticated: true,
-        });
-      } else {
-        mainWindow?.webContents.send(Channels.crossWindow, {
-          isAuthenticated: true,
-          errorMessage: 'No userId',
-        });
-      }
-      profileWindow?.show();
     }
   });
 
