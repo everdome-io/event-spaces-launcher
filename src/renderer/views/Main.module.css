@@ -23,7 +23,7 @@
 }
 
 .slider .slide:nth-child(1) {
-  background-image: url('../../../assets/images/main-bg-img.jpg');
+  background-image: url('../../../assets/images/main-bg-img.png');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
@@ -32,7 +32,7 @@
 }
 
 .slider .slide:nth-child(2) {
-  background-image: url('../../../assets/images/main-bg-img2.jpg');
+  background-image: url('../../../assets/images/main-bg-img.png');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;

@@ -2,7 +2,7 @@ import { AppState, AppUpdate, Channels, CrossWindowState } from '@interfaces';
 import { FC, useEffect } from 'react';
 import chevronRight from 'assets/images/chevron-right.png';
 import { Navigate, useNavigate } from 'react-router-dom';
-import logoImage from 'assets/images/logo.png';
+import logoImage from 'assets/images/spaces_logo.png';
 import { FileDownloader } from '@renderer/components';
 import { ClearStore } from '@renderer/components/ClearStore';
 import styles from './Main.module.css';
@@ -12,7 +12,6 @@ export const Main: FC<{
   updateState: AppUpdate;
   crossWindowState: CrossWindowState;
 }> = ({ state, crossWindowState }) => {
-  const navigate = useNavigate();
   const termsAccepted = window?.electron?.store?.get('termsAccepted');
   const latestWindowsVersion: string | undefined = window?.electron?.store?.get(
     'latestWindowsVersion'
@@ -41,7 +40,7 @@ export const Main: FC<{
           <div className={styles.slide} />
         </div>
         <div className={styles.container}>
-          <img src={logoImage} alt="Everdome" width="220" height="30" />
+          <img src={logoImage} alt="Everdome" width="320" height="90" />
           <section className={styles.mainSection}>
             <div className={styles.welcomeMessage}>
               <p>Description to be added</p>
